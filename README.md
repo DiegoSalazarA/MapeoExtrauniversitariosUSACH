@@ -1,4 +1,5 @@
-# ¿En qué lugares y con quien se desarrolla la Vinculación con el medio? Estudio de caso en la Universidad de Santiago de Chile
+# ¿En qué lugares y con quien se desarrolla la Vinculación con el medio? 
+## Estudio de caso en la Universidad de Santiago de Chile
 
 _Desarrollado por Diego Salazar_
 
