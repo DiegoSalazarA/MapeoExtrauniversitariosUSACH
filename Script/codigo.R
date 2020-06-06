@@ -12,6 +12,7 @@ library(readxl)
 library(dplyr)
 library(tidyr)
 library(car)
+library(ggplot2)
 
 #Creamos objeto desde la base de datos, seleccionado hoja numero 2
 actoresproy1820 <- read_excel("Data/proy_usach.xlsx",2)
@@ -71,6 +72,7 @@ round(prop.table(table(actoresRM$Comuna, actoresRM$Sector))*100, digits = 1)
 table(actoresRM$zona,actoresRM$Sector)
 round(prop.table(table(actoresRM$zona,actoresRM$Sector))*100, digits = 1)
 
+
 # Por Zona y Facultad
 
 table(actoresRM$Facultad,actoresRM$zona)
@@ -110,3 +112,27 @@ round(prop.table(table(SocialesRM$Tipo, SocialesRM$zona))*100, digits = 1)
 
 # ---- 3. Imprimir Resultados ----
 
+# Gráfico de Cantidad de actores por zona
+# Transformamos el vestor zona en factor, las etiquetas se orenan segun el alfabeto
+actoresRM <- mutate(actoresRM, zona_factor = factor(actoresRM$zona,
+                                                    labels = c("CC2","CC3","EI"))) 
+
+ggplot(actoresRM, aes(x=zona_factor)) +
+  geom_bar(width = 0.3,  fill=rgb(1,0,0.4,0.8)) +
+  scale_x_discrete("Circulo Concentrico") + scale_y_continuous("Cantidad de Actores") + 
+  labs(title = "Cantidad de actores por zona")
+
+ggsave("Output/actoresporzona.png")
+
+# Gráfico de Cantidad de actores por Sector
+
+actoresRM <- mutate(actoresRM, sector_factor = factor(actoresRM$Sector,
+                                                    labels = c("Educacion","Productivo",
+                                                               "Publico","Social"))) 
+
+ggplot(actoresRM, aes(x=sector_factor)) + 
+  geom_bar(width = 0.3,  fill=rgb(1,0,0.4,0.8)) +
+  scale_x_discrete("Sector") + scale_y_continuous("Cantidad de Actores") + 
+  labs(title = "Cantidad de actores por sector")
+
+ggsave("Output/actoresporsector.png")
