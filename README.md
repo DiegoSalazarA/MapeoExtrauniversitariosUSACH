@@ -10,10 +10,10 @@ La Investigación es desarrollada desde la sistematización de la información d
 
 #### Objetivo General:
 
-•	Caracterizar el alcance de las acciones de vinculación con el medio de la Universidad de Santiago de Chile.
+- Caracterizar el alcance de las acciones de vinculación con el medio de la Universidad de Santiago de Chile.
 
 #### Objetivos Específicos:
 
-•	Identificar el alcance territorial de las acciones de vinculación con el medio
-•	Caracterizar las acciones de vinculación con el medio según tipo de actor extrauniversitario
-•	Relacionar las acciones de vinculación con el medio según tipo de actor, comuna y Facultad
+- Identificar el alcance territorial de las acciones de vinculación con el medio
+- Caracterizar las acciones de vinculación con el medio según tipo de actor extrauniversitario
+- Relacionar las acciones de vinculación con el medio según tipo de actor, comuna y Facultad
