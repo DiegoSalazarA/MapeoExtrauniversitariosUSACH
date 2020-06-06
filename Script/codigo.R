@@ -26,7 +26,7 @@ summary(actoresproy1820)
 actores <- select(actoresproy1820, Inicio, ID, titulo,
                   Facultad, Sector, Tipo, Comuna, Region)
 
-#unir ID y fecha de inicio, para generar un nuevo ID que incluya el a?o
+#unir ID y fecha de inicio, para generar un nuevo ID que incluya el año en el mismo vector
 
 actores <- unite(actores, Inicio, ID, c(1:2), sep= "") 
 actores <- select(actores, ID = Inicio, titulo, Facultad, Sector, Tipo, Comuna, Region)
@@ -35,7 +35,8 @@ actores <- select(actores, ID = Inicio, titulo, Facultad, Sector, Tipo, Comuna, 
 actoresRM <- filter(actores, Region == "RM")
 
 #Crear Columna Zona, desde la categorizacion de las comunas en tres circulos concentricos
-# EI: Entorno inmediato; CC2: otras comunas dentro de cicunvalacion vespucio
+# EI: Entorno inmediato
+# CC2: otras comunas dentro de cicunvalacion vespucio
 # CC3: Comunas fuera de cicunvalacion vespucio
 
 actoresRM <- mutate(actoresRM, zona = car::recode(actoresRM$Comuna,
@@ -49,7 +50,7 @@ actoresRM <- mutate(actoresRM, zona = car::recode(actoresRM$Comuna,
             'Puente Alto' = 'CC3' ; 'San Jose de Maipo' = 'CC3'; 'El Bosque' = 'CC3';
             'Lampa' = 'CC3';'Melipilla' = 'CC3'; 'Quilicura' = 'CC3'"))
 
-#Guardar base de datos
+#Guardar base de datos con los casos RM
 saveRDS(actoresRM, file = "Output/actoresrm.rds" ,compress = F )
 
 # ---- 2. Analisis ----
@@ -60,7 +61,7 @@ saveRDS(actoresRM, file = "Output/actoresrm.rds" ,compress = F )
 
 table(actoresRM$Comuna)
 
-#Comuna y Sector
+# Tablas cruzando Comuna y Sector (publico,social,productivo o educativo no universitario)
 
 table(actoresRM$Comuna, actoresRM$Sector)
 round(prop.table(table(actoresRM$Comuna, actoresRM$Sector))*100, digits = 1)
@@ -78,7 +79,7 @@ round(prop.table(table(actoresRM$Facultad,actoresRM$zona))*100, digits = 1)
 # ---- 2.2 Analisis por Sector ----
 
 
-#Analisis por Sector y Tipo de actor
+#Analisis por Sector y subsector de actor
 
 table(actoresRM$Sector)
 round(prop.table(table(actoresRM$Sector))*100, digits = 1)
@@ -89,7 +90,7 @@ table(actoresRM$Facultad, actoresRM$Sector)
 round(prop.table(table(actoresRM$Facultad, actoresRM$Sector))*100, digits = 1)
 
 
-# Creamos objeto por cada uno de los Sectores, para analisas sus subsectores
+# Creamos objetos por cada uno de los Sectores, para analisar sus subsectores
 
 EducacionRM <- filter(actoresRM, Sector == "Educacion")
 table(EducacionRM$Tipo)
@@ -106,4 +107,6 @@ round(prop.table(table(PublicosRM$Tipo, PublicosRM$zona))*100, digits = 1)
 SocialesRM <- filter(actoresRM, Sector == "Social")
 table(SocialesRM$Tipo)
 round(prop.table(table(SocialesRM$Tipo, SocialesRM$zona))*100, digits = 1)
+
+# ---- 3. Imprimir Resultados ----
 
