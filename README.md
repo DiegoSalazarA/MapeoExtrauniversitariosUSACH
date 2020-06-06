@@ -1,12 +1,9 @@
-# Mapeo Extrauniversitarios USACH
+# ¿En qué lugares y con quien se desarrolla la Vinculación con el medio? Estudio de caso en la Universidad de Santiago de Chile
 
-Repositorio del desarrollo del trabajo para el Electivo: Herramientas para la Investigación Social Cuantitativa: Ciencia Abierta y Software Libre
-Desarrollado por Diego Salazar
+_Desarrollado por Diego Salazar_
+_Repositorio del desarrollo del trabajo para el Electivo: Herramientas para la Investigación Social Cuantitativa: Ciencia Abierta y Software Libre_
 
-### ¿En qué lugares y con quien se desarrolla la Vinculación con el medio? Estudio de caso en la Universidad de Santiago de Chile
-
-
-La Investigación es desarrollada desde la sistematización de la información disponible en los documentos administrativos de proyectos de Vinculación con el Medio. 
+La Investigación es desarrollada considerando los datos de la sistematización de información disponible en los documentos administrativos de proyectos de Vinculación con el Medio. 
 
 #### Objetivo General:
 
