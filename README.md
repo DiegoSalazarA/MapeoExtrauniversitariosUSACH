@@ -2,7 +2,7 @@
 
 _Desarrollado por Diego Salazar_
 
-_Repositorio del desarrollo del trabajo para el Electivo: Herramientas para la Investigación Social Cuantitativa: Ciencia Abierta y Software Libre_
+_Repositorio de la investigación realizada en el marco del Electivo: Herramientas para la Investigación Social Cuantitativa: Ciencia Abierta y Software Libre_
 
 La Investigación es desarrollada considerando los datos de la sistematización de información disponible en los documentos administrativos de proyectos de Vinculación con el Medio. 
 
