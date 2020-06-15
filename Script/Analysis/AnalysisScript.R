@@ -25,11 +25,19 @@ ctable(actoresRM$Comuna, actoresRM$Sector, prop = "t" , totals = F)
 
 #  Por Zona y Sector
 
-ctable(actoresRM$zona,actoresRM$Sector,  prop = "t" , totals = F)
+ctable(actoresRM$zona,actoresRM$Sector,  prop = "t" , totals = T)
 
 # Por Zona y Facultad
 
 ctable(actoresRM$Facultad,actoresRM$zona, prop = "t" , totals = F)
+
+# Por IPS
+
+freq(actoresRM$IPS)
+
+ctable(actoresRM$IPS_factor,actoresRM$Sector, prop = "t" , totals = T)
+
+ctable(actoresRM$IPS_factor,actoresRM$Tipo , prop = "t" , totals = F)
 
 # ---- 2.2 Analisis por Sector ----
 
