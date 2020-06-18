@@ -9,12 +9,13 @@
 
 #Cargar paquetes
 library(readxl)
+library(tidyverse)
 library(dplyr)
 library(car)
-
+library(carData)
 
 #Creamos objeto desde la base de datos, seleccionado hoja numero 2
-actoresproy1820 <- read_excel("Data/Original Data/proy_usach.xlsx",2)
+actoresproy1820 <- read_excel("Data/Original Data/Proy_usach.xlsx", sheet = 2)
 
 #Revisar base
 names(actoresproy1820)
