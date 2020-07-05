@@ -1,18 +1,12 @@
 #Codigo de trabajo "Ciencia Abierta y Software Libre"
 #Estudiante: Diego Salazar Alvarado
 
-
-
 # ---- 0. Aspectos Generales ----
-
-
 
 #Cargar paquetes
 library(readxl)
-library(tidyverse)
 library(dplyr)
 library(car)
-
 
 #Creamos objeto desde la base de datos, seleccionado hoja numero 2
 basefvime <- read_excel("Data/Original Data/Proy_usach.xlsx", sheet = 2)
@@ -29,15 +23,9 @@ str(basefvime)
 basefvime <- select(basefvime, Inicio, ID, titulo, area,
                   Facultad, Sector, Tipo, Comuna, Region)
 
-#unir ID y fecha de inicio, para generar un nuevo ID que incluya el año en el mismo vector
-
-basefvime <- unite(basefvime, Inicio, ID, c(1:2), sep= "") 
-
-#Cambiamos el nombre a la nueva ID por "ID"
-actores <- select(basefvime, ID = Inicio, titulo, area, Facultad, Sector, Tipo, Comuna, Region)
 
 #Crea objeto para  RM, eliminando los casos internacionales y de otras regiones
-actoresRM <- filter(actores, Region == "RM")
+actoresRM <- filter(basefvime, Region == "RM")
 
 #Crear Columna Zona, desde la categorizacion de las comunas en tres circulos concentricos
 # EI: Entorno inmediato
@@ -85,7 +73,7 @@ actoresRM <- mutate(actoresRM, IPS = car::recode(actoresRM$Comuna,
                                                 'Vitacura' = 'Sin Prioridad'"))
 
 
-# Transformamos los vestores zona e IPS en factor, las etiquetas se ordenan segun el alfabeto
+# Transformamos los vectores zona e IPS en factor, las etiquetas se ordenan segun el alfabeto
 
 actoresRM <- mutate (actoresRM, Area = as.factor(actoresRM$area)) 
 
@@ -104,7 +92,7 @@ actoresRM <- mutate(actoresRM, IPS = factor(actoresRM$IPS,
 
 # Seleccionamos las variables Definitivas
 
-actoresRM <-select(actoresRM, ID, titulo, Area,
+actoresRM <-select(actoresRM, Inicio, ID, titulo, Area,
                    Facultad, Sector, Subsector, Comuna, Circunvalación, IPS,zona)
 
 
