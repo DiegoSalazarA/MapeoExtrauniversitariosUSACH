@@ -9,10 +9,10 @@ La Investigación es desarrollada considerando los datos de la sistematización 
 
 #### Objetivo General:
 
-- caracterizar la Vinculación con el Medio desarrollada por la Universidad de Santiago de Chile.
+- Caracterizar la Vinculación con el Medio desarrollada por la Universidad de Santiago de Chile.
 
 #### Objetivos Específicos:
 
 - Identificar el alcance territorial de las acciones de vinculación con el medio
 - Caracterizar las acciones de vinculación con el medio
-- Relacionar las acciones de vinculación con el medio con 
+
