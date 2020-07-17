@@ -1,0 +1,218 @@
+---
+title: "Inserción territorial de la Universidad de Santiago de Chile en la Región Metropolitana"
+subtitle: "Experiencia del Fondo VIME 2018 - 2020"
+author: "Diego Salazar Alvarado"
+date: "Julio, 2020"
+bibliography: bibliografia.bib
+csl: apa.csl
+output: html_document
+
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+```{r cargar-datos, include=FALSE}
+# Con este comando se carga el archivo (lista) que contiene los resultados
+tablas <- readRDS("Data/Analysis Data/tablas.rds")
+graficos <- readRDS("Data/Analysis Data/graficos.rds")
+mapas <- readRDS("Data/Analysis Data/mapas.rds")
+library(dplyr)
+library(summarytools)
+st_options(footnote = "Fuente: Elaboración propia en base a los datos del Fondo VIME USACH")
+actoresRM <- readRDS("Data/Analysis Data/actoresrm.rds")
+```
+
+### Introducción
+  
+Para la función de la vinculación o la extensión universitaria, el territorio aparece como el ‘terreno de juego’, allí donde la teoría se vuelve práctica” [@arzeno_Extension_2018 p.4], es donde se generan las dinámicas de intercambio y creación de conocimiento mediante el diálogo o confrontación de saberes [@santos_Universidad_2007]. En dichos territorios, la universidad, en tanto fenómeno urbano, también se hace parte como una las fuerzas que se relacionan social y espacialmente, e interactúan negociando según sus intereses [@addie_Urban_2019a].
+Es comprendiendo lo anterior que el presente artículo, tiene como objetivo caracterizar la Vinculación con el Medio desarrollada por la Universidad de Santiago de Chile. Para ello, se emplean los datos de 61 proyectos desarrollados en el marco del Fondo a la Vinculación con el Medio entre los años 2018-2020, en la Región Metropolitana. 
+Se relacionan las variables de
+
+- Área de proyecto: docencia, investigación, comunicación y servicios.
+
+- Sector del actor extrauniversitario: educación, público, productivo y social.
+- Proximidad al campus universitario: entorno inmediato, comunas intermedias, comunas distantes y fuera de la ciudad. 
+- Índice de Prioridad Social: categoriza las comunas en los niveles de alta prioridad, media alta prioridad, media baja prioridad, baja prioridad, sin prioridad.
+
+En el artículo se presentan la idea de Vinculación con el Medio que se desarrolla en Chile, y su cristalización en las políticas institucionales de la Universidad de Santiago. Luego se presentan las categorías a trabajar y se realiza el cruce de los datos obtenidos. Finalmente, del análisis realizado según las variables anteriormente planteadas, se desarrolla una caracterización y se identifican elementos a abordar.
+
+
+### 1) La Vinculación con el Medio desde la Universidad de Santiago de Chile
+
+En la Política de Vinculación con el Medio de la Universidad de Santiago, nace de un proceso participativo en 2018. En ella se define la vinculación con el medio como: 
+
+> "Una responsabilidad y un deber de la Universidad de Santiago de Chile como entidad estatal y pública, pilar fundamental para la investigación y docencia, que le permite asegurar su compromiso y contribución permanente al desarrollo integral de la sociedad" [@universidaddesantiagodechile_Politica_2018a p.6]
+
+Ello se concretaría en acciones y relaciones que pueden “variar en sus grados de formalización, tiempo y nivel de bidireccionalidad”. Además, estas conllevarían elementos de "docencia, investigación, extensión y del quehacer general de la Universidad" [@universidaddesantiagodechile_Politica_2018a p.6]. Los principios que guían dichas acciones serían la democratización del conocimiento y la cultura, el respeto e integración, la responsabilidad y sustentabilidad, la bidireccionalidad y la ética" [@vicerrectoriadevinculacionconelmedio_Bases_2019 p.4]. 
+
+Junto a lo anterior, en los documentos institucionales, se reconoce a la vinculación "como un área esencial y transversal al cumplimiento de la misión institucional, lo que se plasma con claridad en el Plan Estratégico Institucional 2016-2020" [@vicerrectoriadevinculacionconelmedio_Bases_2019 p.3]. El carácter de transversalidad de la función se puede vincular a la idea de integralidad desarrollada en la discusión Latinoamericana respecto a la extensión crítica. 
+
+Con objeto de fomentar la Vinculación con el medio en la comunidad académica "se fomentará la creación de sistemas que permitan contar con los recursos económicos y humanos necesarios para realizar actividades y programas de vinculación" [@universidaddesantiagodechile_Politica_2018a p.15]. Siguiendo dicha línea de acción, la Vicerrectoría de Vinculación con el Medio crea el Fondo VIME, fuente de financiamiento de proyectos que tiene como objetivo:
+
+>"Promover, fortalecer y consolidar las actividades de vinculación con el medio desarrolladas por las unidades académicas y la comunidad universitaria a través del financiamiento y apoyo a iniciativas de docencia, investigación, extensión y prestación de servicios que involucren la participación de actores del medio" [@vicerrectoriadevinculacionconelmedio_Bases_2019 p.4].
+
+Estableciendo cuatro áreas de desarrollo para los proyectos, a saber: 
+- Docencia con sello de Vinculación con el Medio: incluyen docencia de pregrado, postgrado y educación continua, “conllevan una relación con actores del medio en una o varias de las etapas del proceso de enseñanza y aprendizaje” [@vicerrectoriadevinculacionconelmedio_Bases_2019 p.6]. Actividades que se desarrollan vinculadas al currículo, comprendiendo aprendizaje más servicio, desarrollo de trabajos de fin de estudios, entre otras.
+
+- Investigación con sello de vinculación con el medio: “implican la participación de uno o varios actores extrauniversitarios en alguna etapa del desarrollo de la iniciativa, con tal de apoyar la alineación de la investigación con las necesidades de política pública y problemas actuales o futuros de la sociedad” [@vicerrectoriadevinculacionconelmedio_Bases_2019 p.6]. Comprende distintas formas de construcción colaborativa del conocimiento en procesos investigativos formales, como la recuperación de memoria histórica, sistematización de experiencias, investigación-acción, entre otras.  
+
+- Comunicación del conocimiento: “son proyectos que buscan la democratización del conocimiento por medio de un diálogo bidireccional con uno o varios actores del medio, poniendo en valor los diferentes tipos de saberes y formas de conocimiento presentes en la sociedad” [@vicerrectoriadevinculacionconelmedio_Bases_2019 p.6]. Comprende talleres, ferias, cursos abiertos, actividades culturales, entre otras.  
+
+- Prestación de servicio: “son proyectos que ponen a disposición de los actores del medio conocimientos específicos de una o más disciplinas para la solución de problemas, desarrollando mecanismos para mejorar la calidad de vida, las condiciones del entorno y el fortalecimiento de redes territoriales” [@vicerrectoriadevinculacionconelmedio_Bases_2019 p.7]. Incluye actividades como capacitaciones, operativos de salud, identificación de necesidades territoriales, entre otras.
+
+### 2) Metodología
+
+Para el desarrollo de la caracterización se empleará la información de los documentos administrativos del periodo 2018-2020. Dicha información se encuentra sistematizada en una base de datos de la Unidad de Estudios e Instrumentos de la Vicerrectoría de Vinculación con el Medio. De los datos obtenidos se realizó un análisis estadístico descriptivo [@blalock_Estadistica_1998], relacionando según sector de la sociedad al que pertenecen los actores y su distribución territorial en la Región Metropolitana. La información fue trabajada en lenguaje de programación R, en el entorno de desarrollo Rstudio en su versión 4.0.1 software estadístico de código abierto.
+
+
+#### 2.1) Categorías empleadas
+
+##### 2.1.1) Sector
+
+Los actores se encuentran categorizados en los siguientes sectores según su quehacer:
+
+- Educación: establecimientos del sistema escolar. Incluye: particulares subvencionados, municipales, particulares pagados y corporaciones de administración delegada.
+
+- Productivo: actores que tienen participación en la productividad del país. Incluye: pequeñas empresas, cooperativas y trabajadores independientes.
+
+- Público: instituciones dependientes del Estado. Incluye: Gobiernos Locales, servicios públicos, instituciones públicas autónomas y Ministerios.
+
+- Social: organizaciones de la sociedad civil. Incluye: organizaciones comunitarias, gremios, organizaciones no gubernamentales, deportivas y religiosas de base.
+
+##### 2.1.2) Categorías Territoriales
+
+A nivel territorial, se emplean dos categorizaciones de las comunas de la Región Metropolitana:
+
+Por un lado, según el criterio de distancia del único campus universitario de la institución, inspirándonos en la teoría de los círculos concéntricos de Ernest Burgess, se establecieron arbitrariamente 4 niveles de distancia.
+
+- Entorno inmediato: incluye las comunas de Cerrillos, Estación Central, Lo Prado, Pedro Aguirre Cerda, Quinta Normal y Santiago.
+
+- Comunas intermedias: incluye las comunas de Cerro Navia, Conchalí, Independencia, La Cisterna, La Granja, Lo Espejo, Macul, Maipú, Ñuñoa, Providencia, Pudahuel, Recoleta, Renca, San Joaquín, San Miguel y San Ramón.
+
+- Comunas distantes: incluye las comunas de El Bosque, Huechuraba, La Florida, La Pintana, La Reina, Las Condes, Peñalolén, Puente Alto, Quilicura, San Bernardo y Vitacura.
+
+- Fuera de la ciudad: incluye las comunas de Alhué, Buin, Calera de Tango, Colina, Curacaví, El Monte, Isla de Maipo, Lampa, Lo Barnechea, María Pinto, Melipilla, Padre Hurtado, Paine, Peñaflor, Pirque, San José de Maipo, San Pedro, Talagante y Tiltil.
+
+```{r mapa1, message=FALSE, warning=FALSE, fig.align='center', out.width='80%', echo=FALSE}
+mapas[[1]]
+```
+
+Por otro lado, fue empleado el Índice de Prioridad Social, instrumento de medición desarrollado por el Ministerio de Desarrollo Social, que considera las dimensiones de ingreso, educación y salud. Este instrumento permite medir "el desarrollo socioeconómico alcanzado -en un momento determinado- por la población de las comunas de la Región Metropolitana de Santiago" [@gajardopolanco_Region_2019 p.4]. Sus categorías son: 
+
+- Alta prioridad: Cerro Navia, Isla de Maipo, La Pintana, Lo Espejo, María Pinto y San Ramón.
+
+- Media alta prioridad: Buin, Conchalí, Curacaví, El Bosque, El Monte, Lo Prado, Melipilla, Padre Hurtado, Paine, Recoleta, San Bernardo, San Joaquín y San José de Maipo.
+
+- Media baja prioridad: Alhué, Estación Central, Independencia, La Cisterna, La Granja, Lampa, Pedro Aguirre Cerda, Peñaflor, Pirque, Pudahuel, Quinta Normal, Renca, San Pedro, Talagante y Tiltil.
+
+- Baja prioridad: Calera de Tango, Cerrillos, Colina, Huechuraba, La Florida, Macul, Maipú, Peñalolén, Puente Alto, Quilicura, San Miguel y Santiago.
+
+- Sin prioridad: La Reina, Las Condes, Lo Barnechea, Ñuñoa, Providencia y Vitacura.
+
+```{r mapa2, message=FALSE, warning=FALSE, fig.align='center', out.width='80%', echo=FALSE}
+mapas[[2]]
+```
+
+### 3) Resultados
+
+#### 3.1) Actores según sector
+
+Los proyectos considerados involucraron en sus actividades a 112 actores extrauniversitarios, en la siguiente tabla se presenta la distribución de actores según sector:  
+
+**Tabla 1: porcentaje de actores extrauniversitarios según sector**
+```{r tabla1, echo=FALSE}
+
+print(freq(actoresRM$Sector), report.nas = F , cumul = FALSE,justify = "center", headings = 'fgfgf', method = 'render')
+```
+En la Tabla 1 se identifica que la mayor cantidad de actores son del sector Educación, de los cuales 21 de estos establecimientos son particulares subvencionados, 18 de dependencia municipal, 7 particulares pagados y 3 de administración delegada. En relación con el sector social, 11 son organizaciones comunitarias, 8 corresponden a organizaciones no gubernamentales, 8 son deportivas y una es una organización religiosa de base. Del sector productivo, 12 son pequeñas empresas, 6 cooperativas y una asociación de trabajadores independientes. Finalmente, del sector Público, 9 son de Gobiernos Locales, 4 Servicios públicos, un ministerio del gobierno central y una institución pública autónoma. En el siguiente gráfico se presenta la distribución de actores según área de proyecto:
+
+```{r grafico 1, message=FALSE, warning=FALSE, fig.align='center', out.width='80%', echo=FALSE}
+graficos[[1]]
+```
+
+Los datos dejan ver que existe una tendencia a las actividades de comunicación en versión ferias, talleres y eventos para colegios, actividades con participación del 43,8% de los actores extrauniversitarios. De todas formas, se visualiza un porcentaje no menor de las actividades de docencia e investigación, ambas áreas apuntan a la curricularización; y a la consolidación de integralidad de las funciones universitarias. Dichas actividades concentran el 35,8% de la participación. En la Tabla 2 se presentan en detalle los datos.  
+
+**Tabla 2: distribución porcentual de actores extrauniversitarios según sector y área de proyecto**
+
+```{r tabla 2,echo=FALSE}
+
+print(ctable(actoresRM$Sector, actoresRM$Area, prop = "t" , totals = T, headings = F),method = 'render')
+```
+
+#### 3.2) Actores según proximidad al campus
+
+En relación con la distribución territorial, es importante destacar que el 47,3% de los actores extrauniversitarios, están ubicados en el entorno inmediato. En la medida que la ubicación es más lejana al campus universitario, menos actores participan. comunas intermedias: 28,6%, comunas distantes, 17%, y fuera de la ciudad, 7,1%. El mapa 3 muestra la presencia a nivel comunal de los actores del medio participantes en proyectos del Fondo VIME.
+
+```{r mapa3, message=FALSE, warning=FALSE, fig.align='center', out.width='80%', echo=FALSE}
+mapas[[3]]
+```
+
+En el mapa 3 se visualiza que existe una presencia importante de proyectos en la Región Metropolitana, equivaliendo a 26 comunas de un total de 52, es decir el 50% de estas. En el gráfico 2, se presenta la distribución de los actores extrauniversitarios según la categorización territorial anteriormente planteada.
+
+```{r grafico 2, message=FALSE, warning=FALSE, fig.align='center', out.width='80%', echo=FALSE}
+graficos[[2]]
+```
+
+Si bien existe hay presencia en varias comunas de la región, estas se concentran principalmente en el entorno inmediato, trabajado particularmente con actores del sector de educación y social. En la Tabla 3 se exponen los porcentajes en detalle.  
+
+**Tabla 3: porcentajes de distribución porcentual según distancia del campus de actores del medio por sector**
+
+```{r tabla 3,echo=FALSE}
+print(ctable(actoresRM$Sector, actoresRM$Circunvalacion, prop = "t" , totals = T, style = 'rmarkdown', headings = F), method='render')
+```
+  
+En todos los sectores, la mayoría de los actores se encuentran ubicados en el entorno inmediato. En relación con las comunas distantes, podemos identificar que tiene una mayor proporción de actores en el sector Público, aunque sigue siendo menor en relación con el sector educación y social. Otro elemento para considerar es que existen muy pocos actores que se encuentran fuera de la ciudad de Santiago. 
+
+Además de lo anterior, los actores son en gran medida de las comunas más próximas al campus, concentrando entre las estas comunas el 61% de las organizaciones con la que existen proyectos.  En el mapa 4, se presentan las 4 comunas con mayor concetración. Destaca que entre Estación Central y Santiago suman un 41% de los actores. Por otro lado existe una gran diferencia entre la cantidad de actores de tres primeras comunas (Estación Central, Santiago y Maipu), del 12 % de la tercera, pasa a un 6% en Ñuñoa.
+
+```{r mapa4, message=FALSE, warning=FALSE, fig.align='center', out.width='80%', echo=FALSE}
+mapas[[4]]
+```
+
+En síntesis, la Universidad de Santiago de Chile mediante su instrumento de desarrollo de proyectos de vinculación con el medio, cubre un amplio territorio de la región, sin embargo se concentra principalmente en el Entorno Inmediato y particularmente en tres comunas. Si bien las iniciativas no son dirigidas a impactar en el entorno inmediato mediante definiciones en la política institucional en las bases del Fondo VIME, se demuestra que espontáneamente los proyectos concentran su quehacer en el nivel mas próximo de distancia del campus.
+
+#### 3.3) Según prioridad social
+
+Al realizar el mismo ejercicio de análisis con el Índice de Prioridad Social, es posible identificar que las comunas con una mayor prioridad en la RM no son necesariamente el foco de las actividades de Vinculación con el Medio. Esto se puede explicar comprendiendo el apartado anterior, ya que las comunas del entorno inmediato -particularmente las que más actividades concentran- se ubican en las categorías de media baja o baja prioridad social.
+
+En el mapa 5 es visible las comunas en las que se ubican actores del medio y comunidades con los que se desarrollan los proyectos.
+
+```{r mapa5, message=FALSE, warning=FALSE, fig.align='center', out.width='80%', echo=FALSE}
+mapas[[5]]
+```
+
+Los actores extrauniversitarios son, como se plantea anteriormente, del sector educación y social, ubicados principalmente en comunas de baja o media baja prioridad. Las comunas de alta o media alta prioridad son los lugares en que menos presencia existe. Solo el 14,3% de los actores son parte de comunas con una alta o media alta prioridad. Ambas categorías siendo superadas incluso por el 15,2% de actores ubicados en comunas sin prioridad social.
+
+```{r grafico 3, message=FALSE, warning=FALSE, fig.align='center', out.width='80%', echo=FALSE}
+graficos[[3]]
+```
+
+```{r tabla 4, echo=FALSE}
+
+print(ctable(actoresRM$Sector, actoresRM$IPS, prop = "t" , totals = T, style = 'rmarkdown', headings = F), method = 'render')
+```
+
+Podemos concluir en este apartado, que si bien la política de vinculación con el medio define ser una aporte para el desarrollo, actualmente no se trabaja con especial énfasis en territorios con un Índice de Prioridad Social alta o media alta. 
+
+### 4) Conclusiones
+  
+En la política de vinculación con el medio de la Universidad de Santiago de Chile se plasma una perspectiva de intercambio bidireccional con las organizaciones y actores con los que se relaciona, estableciendo una herramienta de financiamiento de proyectos para esos fines, definiendo áreas de trabajo que buscan profundizar la transversalización de la vinculación, y aportando al avance hacia la integralidad de las funciones universitarias.
+
+Las 61 iniciativas que sirvieron de fuente de este estudio dan cuenta de que la mayoría de las organizaciones con las que se desarrollan proyectos son parte del entorno inmediato al campus universitario, y que, según el Índice de Prioridad Social, se trabaja mayoritariamente con organizaciones de las comunas con baja prioridad social. 
+
+En ese entendido, la USACH contribuye al desarrollo del territorio en el que encuentra enclavado el campus universitario. Sin embargo, no apunta concretamente al trabajo con territorios con problemáticas sociales de mayor prioridad social. Un debate que debería abrir la comunidad universitaria es si se permanece en la espontaneidad de las acciones o se definen parámetros y criterios para priorizar los sectores a los cuales pertenecen las organizaciones o su ubicación territorial y las características de estos.
+
+Por otro lado, la mayor parte de las organizaciones son del sistema escolar, en gran parte de carácter particular subvencionado, a través del desarrollo de actividades de comunicación, es decir, talleres, ferias y divulgación del conocimiento. Se puede inferir que existe una cultura de extensión – difusión por sobre el trabajo de construcción de conocimiento conjunto. Sin embargo, las definiciones establecidas y la cantidad de actores involucrados en proyectos que apuntan a la curricularización y desarrollo de investigaciones colaborativas demuestran que se generan instancias que cimentan un camino hacia una mirada más participativa de esta función universitaria. Por tanto, la universidad de Santiago estaría ubicada en un modelo hibrido, entre la extensión tradicional y la vinculación con el medio como extensión crítica [@gonzalezlopez_Vinculacion_2017a]
+
+Con relación a la política de los concursos para la obtención de financiamiento de proyectos, si bien se considera que es efectiva a la hora de concretar acción de Vinculación con el medio, según Tommasino y Cano, consolidaría “una situación de cierta fragilidad del quehacer extensionista de las universidades" [@tommasino_Modelos_2016 p.6]. Sumado a que existe el riesgo de la realización de actividades por el mero hecho de ejecutar, en desmedro de la generación y construcción de aprendizajes, “a los cuales hay que dedicar un esfuerzo reflexivo sistemático y ordenado" [@jaraholliday_Por_2019 p.5]. En ese entendido, cobra relevancia que la política de financiamiento de proyectos de vinculación con el medio venga acompañada de acciones que apunten a la jerarquización de dicha función y a profundizar la integralidad. Además de ello, las relaciones colaborativas y bidireccionales establecidas en el marco de un proyecto, se pueden ver limitada por los márgenes temporales y materiales que entregan la dinámica de los proyectos. 
+
+Un tema pendiente es el desarrollo de mecanismos de medición y evaluación [@fleet_Midiendo_2017]. Si bien esta investigación busca aportar en este aspecto, es necesario avanzar en procesos de evaluación y sistematización de manera participativa y con las comunidades extrauniversitarias, comprendiéndolas como instancias de aprendizaje y constructoras de nuevo conocimiento.
+En el marco de la pandemia actual, es relevante reflexionar el como desarrollaremos la función de vinculación con el medio o extensión universitaria. Teniendo en cuenta el riesgo de retroceder hacía a un paradigma extensionista-difusionista mediante la virtualización de la función. Es vital importancia para sostener relaciones colaborativas en el marco actual - y en lo venidero- el generar espacios de sistematización e intercambio de experiencias.
+
+## Referencias
+
+```{r, echo=FALSE}
+rm(list=ls())
+```
